@@ -1,0 +1,30 @@
+<div class="container my-5">
+    <h1 class="mb-3">Sales</h1>
+    <table class="table" *ngIf="sales && sales.length > 0">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Creation Date</th>
+                <th>Finished Date</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Seller</th>
+                <th>Buyer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let sale of sales">
+                <td>{{sale.id}}</td>
+                <td>{{sale.name}}</td>
+                <td>{{sale.creationDt}}</td>
+                <td>{{sale.finishedDt}}</td>
+                <td>{{sale.price}}</td>
+                <td>{{sale.status}}</td>
+                <td>{{sale.seller}}</td>
+                <td>{{sale.buyer}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <p *ngIf="!sales || sales.length == 0">No Sales Found</p>
+</div>
