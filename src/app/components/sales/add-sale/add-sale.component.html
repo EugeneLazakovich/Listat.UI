@@ -1,1 +1,28 @@
-<p>add-sale works!</p>
+<div class="container my-5">
+    <h1 class="mb-3">Edit Item</h1>
+    <div class="row">
+        <div class="col-6">
+            <form #form="ngForm" (ngSubmit)="addSale()" *ngIf="itemDetails">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text" class="form-control" id="name" readonly name="name" [(ngModel)] = "saleDetails.name">
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <input type="number" class="form-control" id="price" name="price" [(ngModel)] = "saleDetails.price">
+                </div>
+                <div class="mb-3">
+                    <label for="seller" class="form-label">Seller</label>
+                    <input type="text" class="form-control" id="seller" name="seller" [(ngModel)] = "saleDetails.seller">
+                </div>
+                <div class="mb-3">
+                    <label for="buyer" class="form-label">Buyer</label>
+                    <input type="text" class="form-control" id="buyer" name="buyer" [(ngModel)] = "saleDetails.buyer">
+                </div>
+                <button type="submit" class="btn btn-primary">Buy</button>
+              </form>
+              <p *ngIf="!itemDetails">No Item Found</p>
+        </div>
+    </div>    
+</div>
+

@@ -27,7 +27,7 @@ const routes: Routes = [
     component: SalesListComponent
   },
   {
-    path: 'auctions/add',
+    path: 'auctions/add/:id',
     component: AddSaleComponent
   }
 ];

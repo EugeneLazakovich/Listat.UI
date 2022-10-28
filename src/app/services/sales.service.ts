@@ -15,6 +15,13 @@ export class SalesService {
   constructor(private http: HttpClient) { }
 
   getAllSales(): Observable<Sale[]>{
-    return this.http.get<Sale[]>(this.baseApiUrl + '/api/v' + this.version + "/auctions");
+    return this.http.get<Sale[]>(this.baseApiUrl + '/api/v' + this.version + "/auctions/all");
+  }
+
+  addSale(saleDetails: Sale): Observable<number>{
+    console.log(saleDetails);
+    saleDetails.createdDt = new Date().toDateString();
+    saleDetails.status = "Active";
+    return this.http.post<number>(this.baseApiUrl + '/api/v' + this.version + '/auctions/add', saleDetails);
   }
 }

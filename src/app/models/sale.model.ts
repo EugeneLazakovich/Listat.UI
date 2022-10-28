@@ -1,10 +1,10 @@
 export interface Sale{
     id: number;
     name: string;
-    creationDt: Date;
-    finishedDt: Date;
     price: number;
+    createdDt: string;
     status: string;
     seller: string;
     buyer: string;
+    itemId: number;
 }
