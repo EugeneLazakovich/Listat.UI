@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SaleFilter } from 'src/app/models/sale-filter.model';
 import { Sale } from 'src/app/models/sale.model';
 import { SalesService } from 'src/app/services/sales.service';
 
@@ -9,8 +11,18 @@ import { SalesService } from 'src/app/services/sales.service';
 })
 export class SalesListComponent implements OnInit {
 
+  statuses = ['None', 'Canceled', 'Finished', 'Active'];
+  isCreatedDt: any = false;
+  isAsc: any = true;
   sales: Sale[] = [];
-  constructor(private salesService: SalesService) { }
+  saleFilter: SaleFilter = {
+    name: '',
+    status: '',
+    seller: '',
+    sort_key: '',
+    sort_order: ''
+  }
+  constructor(private salesService: SalesService, private router: Router) {  }
 
   ngOnInit(): void {
     this.salesService.getAllSales().subscribe({
@@ -24,4 +36,14 @@ export class SalesListComponent implements OnInit {
     });
   }
 
+  getSales(){
+    this.saleFilter.sort_key = this.isCreatedDt ? "CreatedDt" : "Price";
+    this.saleFilter.sort_order = this.isAsc ? "asc" : "desc";
+    this.salesService.getSales(this.saleFilter).subscribe({
+      next: (sales) => {
+        console.log(sales);
+        this.sales = sales;
+      }
+    })
+  }
 }

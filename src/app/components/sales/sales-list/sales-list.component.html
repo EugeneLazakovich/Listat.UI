@@ -1,5 +1,52 @@
 <div class="container my-5">
     <h1 class="mb-3">Sales</h1>
+    <form #form="ngForm" (ngSubmit)="getSales()">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" name="name" style="width: 300px; height: 40px" [(ngModel)] = "saleFilter.name">
+        </div>
+        <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
+            <select class="form-select" aria-label="Status" name="status" id="status" style="width: 300px; height: 40px" [(ngModel)] = "saleFilter.status">
+                <option *ngFor="let status of statuses">{{status}}</option>
+            </select>
+        </div>         
+        <div class="mb-3">
+            <label for="seller" class="form-label">Seller</label>
+            <input type="text" class="form-control" id="seller" name="seller" style="width: 300px; height: 40px" [(ngModel)] = "saleFilter.seller">
+        </div>
+        <div class="mb-3">
+            <label for="sort_key" class="form-label">Sort by</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="sort_key" id="createdDt" [(ngModel)] = "isCreatedDt" [value] = "true">
+                <label class="form-check-label" for="createdDt">
+                    Date created
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="sort_key" id="price" checked [(ngModel)] = "isCreatedDt" [value] = "false">
+                <label class="form-check-label" for="price">
+                    Price
+                </label>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="sort_order" class="form-label">Sort order by</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="sort_order" id="asc" checked [(ngModel)] = "isAsc" [value] = "true">
+                <label class="form-check-label" for="createdDt">
+                    Ascending
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="sort_order" id="desc" [(ngModel)] = "isAsc" [value] = "false">
+                <label class="form-check-label" for="price">
+                    Descending
+                </label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
     <table class="table" *ngIf="sales && sales.length > 0">
         <thead>
             <tr>
