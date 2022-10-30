@@ -47,6 +47,12 @@
         </div>
         <button type="submit" class="btn btn-primary">Search</button>
       </form>
+    <p></p>
+    <div class="mb-3">
+        <select class="form-select" style="width: 100px; height: 40px" [(ngModel)] = "saleFilter.limit">
+            <option *ngFor="let limit of limits">{{limit}}</option>
+        </select>
+    </div> 
     <table class="table" *ngIf="sales && sales.length > 0">
         <thead>
             <tr>

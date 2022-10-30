@@ -4,4 +4,6 @@ export interface SaleFilter {
     seller: string;
     sort_key: string;
     sort_order: string;
+    limit: string;
+    page: string;
 }

@@ -12,6 +12,7 @@ import { SalesService } from 'src/app/services/sales.service';
 export class SalesListComponent implements OnInit {
 
   statuses = ['None', 'Canceled', 'Finished', 'Active'];
+  limits = ['5', '10', '25', '50'];
   isCreatedDt: any = false;
   isAsc: any = true;
   sales: Sale[] = [];
@@ -20,7 +21,9 @@ export class SalesListComponent implements OnInit {
     status: '',
     seller: '',
     sort_key: '',
-    sort_order: ''
+    sort_order: '',
+    limit: '10',
+    page: ''
   }
   constructor(private salesService: SalesService, private router: Router) {  }
 

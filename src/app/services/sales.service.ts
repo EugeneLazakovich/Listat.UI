@@ -27,7 +27,9 @@ export class SalesService {
         status: saleFilter.status,
         seller: saleFilter.seller,
         sort_key: saleFilter.sort_key,
-        sort_order: saleFilter.sort_order
+        sort_order: saleFilter.sort_order,
+        limit: saleFilter.limit,
+        page: saleFilter.page
       }
     });
   }
