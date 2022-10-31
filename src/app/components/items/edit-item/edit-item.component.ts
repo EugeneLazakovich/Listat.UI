@@ -49,4 +49,8 @@ export class EditItemComponent implements OnInit {
     })
   }
 
+  backItem(){
+    this.router.navigate(['items']);
+  }
+
 }

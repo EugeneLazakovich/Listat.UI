@@ -13,8 +13,8 @@ export class SalesListComponent implements OnInit {
 
   statuses = ['None', 'Canceled', 'Finished', 'Active'];
   limits = ['5', '10', '25', '50'];
-  isCreatedDt: any = false;
-  isAsc: any = true;
+  isCreatedDt: boolean = false;
+  isAsc: boolean = true;
   sales: Sale[] = [];
   saleFilter: SaleFilter = {
     name: '',
@@ -23,20 +23,20 @@ export class SalesListComponent implements OnInit {
     sort_key: '',
     sort_order: '',
     limit: '10',
-    page: ''
+    page: '1'
   }
   constructor(private salesService: SalesService, private router: Router) {  }
 
   ngOnInit(): void {
-    this.salesService.getAllSales().subscribe({
+    /*this.salesService.getAllSales().subscribe({
       next: (sales) => {
-        console.log(sales);
         this.sales = sales;
       },
       error: (response) => {
         console.log(response);
       }
-    });
+    });*/
+    this.getSales();
   }
 
   getSales(){
@@ -44,7 +44,6 @@ export class SalesListComponent implements OnInit {
     this.saleFilter.sort_order = this.isAsc ? "asc" : "desc";
     this.salesService.getSales(this.saleFilter).subscribe({
       next: (sales) => {
-        console.log(sales);
         this.sales = sales;
       }
     })

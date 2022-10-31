@@ -49,7 +49,7 @@
       </form>
     <p></p>
     <div class="mb-3">
-        <select class="form-select" style="width: 100px; height: 40px" [(ngModel)] = "saleFilter.limit">
+        <select class="form-select" style="width: 100px; height: 40px" [(ngModel)] = "saleFilter.limit" (change)="getSales()">
             <option *ngFor="let limit of limits">{{limit}}</option>
         </select>
     </div> 

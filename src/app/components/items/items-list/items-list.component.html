@@ -8,16 +8,14 @@
                 <th>Description</th>
                 <th>Metadata</th>
                 <th> </th>
-                <th> </th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let item of items">
                 <td>{{item.id}}</td>
-                <td>{{item.name}}</td>
+                <td><a [routerLink]="['/items', 'edit', item.id]">{{item.name}}</a></td>
                 <td>{{item.description}}</td>
                 <td>{{item.metadata}}</td>
-                <td><a [routerLink]="['/items', 'edit', item.id]">View</a></td>
                 <td><a [routerLink]="['/auctions', 'add', item.id]">Buy</a></td>
             </tr>
         </tbody>
